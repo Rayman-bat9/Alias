@@ -1,38 +1,130 @@
-.App {
-  text-align: center;
+* {
+    margin: 0;
+    padding: 0;
+    background: #202020;
+    color: #cccaca;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app {
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.game-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.game-control-panel {
+    position: fixed;
+    bottom: 0;
+    font-size: 40px;
+    width: 150px;
+    height: 150px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.button-start {
+    font-size: 40px;
+    color: black;
+    border: 3px solid green;
+    border-radius: 5px;
+    background-color: rgb(93, 223, 93);
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.button-next {
+    font-size: 36px;
+    color: black;
+    border: 3px solid green;
+    border-radius: 5px;
+    background-color: rgb(93, 223, 93);
+    margin-bottom: 20px;
+    padding: 10px; 
+    width: 100px;
+}
+
+.game-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.words-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.correct-button {
+    margin-left: 5px;
+    width: 30px;
+    height: 30px;
+    border: 2px solid green;
+    border-radius: 5px;
+    color: green;
+}
+
+.correct-score {
+    position: fixed;
+    right: 50%;
+}
+
+.score-plus {
+    font-size: 26px;
+    width: 36px;
+    height: 36px;
+    border: 2px solid green;
+    border-radius: 5px;
+}
+
+.score-minus {
+    font-size: 26px;
+    width: 36px;
+    height: 36px;
+    border: 2px solid red;
+    border-radius: 5px;
+}
+
+.num-correct-p {
+    position: absolute;
+    bottom: 130px;
+    right: -35px;
+    text-align: center;
+}
+
+.round-over-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}   
+
+.ready-button {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 40px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
