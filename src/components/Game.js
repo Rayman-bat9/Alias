@@ -7,6 +7,7 @@ function Game() {
   const [randomWord, setRandomWord] = useState('');
   const [availableWords, setAvailableWords] = useState(words);
   const [correctScore, setCorrectScore] = useState(0);
+  const [roundOverStage, setRoundOverStage] = useState(false);
   const [timeLeft, setTimeLeft] = useState(1 * 60);
   const [isCounting, setIsCounting] = useState(false);
   const minutes = getPadTime(Math.floor(timeLeft / 60));
@@ -18,7 +19,7 @@ function Game() {
         setTimeLeft(() => (timeLeft >= 1 ? timeLeft - 1 : 0));
       }
     }, 1000);
-    if (timeLeft === 0) setIsCounting(false);
+    if (timeLeft === 0) { setIsCounting(false); setRoundOverStage(true); }
     return () => {
       clearInterval(interval);
     };
@@ -33,6 +34,7 @@ function Game() {
     /* eslint-disable-next-line */
       alert('Game over!'); 
       setIsCounting(false);
+      setRoundOverStage(true);
       setAvailableWords(words);
       setTimeLeft(1 * 60);
     }
@@ -40,6 +42,11 @@ function Game() {
 
   const handleStart = () => {
     setIsCounting(true);
+    setCorrectScore(0);
+    nextWord();
+  };
+
+  const handleNextWord = () => {
     nextWord();
   };
 
@@ -59,7 +66,7 @@ function Game() {
   return (
     <div className="timer">
       {isCounting
-        ? (
+        && (
           <div className="game-area">
             <div>
               <span>{minutes}</span>
@@ -70,22 +77,21 @@ function Game() {
               <p>{randomWord}</p>
               <button className="correct-button" onClick={correctScorePlus}>✓</button>
             </div>
-            <MyButton onClick={handleStart}>Next</MyButton>
-          </div>
-        )
-        : (
-          <div className="round-over-area">
-            {isCounting && (
-            <div>
-              <p className="num-correct-p">Правельных ответов: </p>
-              {correctScore}
-              <button className="score-plus" onClick={scorePlus}>+</button>
-              <button className="score-minus" onClick={scoreMinus}>-</button>
-            </div>
-            )}
-            <MyButton onClick={handleStart}>Start</MyButton>
+            <MyButton onClick={handleNextWord}>Next</MyButton>
           </div>
         )}
+      {roundOverStage && (
+        <div className="round-over-area">
+          <div>
+            <p className="num-correct-p">Правельных ответов: </p>
+            {correctScore}
+            <button className="score-plus" onClick={scorePlus}>+</button>
+            <button className="score-minus" onClick={scoreMinus}>-</button>
+          </div>
+          <MyButton>Agree</MyButton>
+        </div>
+      )}
+      {!isCounting && !roundOverStage && <MyButton onClick={handleStart}>Start</MyButton>}
     </div>
   );
 }
