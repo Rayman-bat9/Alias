@@ -25,7 +25,7 @@ function Game() {
     };
   }, [timeLeft, isCounting]);
 
-  const nextWord = () => {
+  const setNextWord = () => {
     const randomIndex = Math.floor(Math.random() * availableWords.length);
     setRandomWord(availableWords[randomIndex]);
     availableWords.splice(randomIndex, 1);
@@ -43,16 +43,12 @@ function Game() {
   const handleStart = () => {
     setIsCounting(true);
     setCorrectScore(0);
-    nextWord();
-  };
-
-  const handleNextWord = () => {
-    nextWord();
+    setNextWord();
   };
 
   const correctScorePlus = () => {
     setCorrectScore(correctScore + 1);
-    nextWord();
+    setNextWord();
   };
 
   const scorePlus = () => {
@@ -77,7 +73,7 @@ function Game() {
               <p>{randomWord}</p>
               <button className="correct-button" onClick={correctScorePlus}>✓</button>
             </div>
-            <MyButton onClick={handleNextWord}>Next</MyButton>
+            <MyButton onClick={setNextWord}>Next</MyButton>
           </div>
         )}
       {roundOverStage && (
