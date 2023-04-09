@@ -1,8 +1,0 @@
-{
-    "extends": [
-      "airbnb"
-    ],
-    "rules": {
-        "no-console": "error"
-    }
-}
