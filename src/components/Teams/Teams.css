@@ -1,13 +1,17 @@
 * {
     padding: 0;
     margin: 0;
+    font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    color: #4d4d4d;
 }
 
 .teams-panel {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-top: 45px;
+    justify-content: center;
+    margin: auto;
 }
 
 .teams-panel p {
@@ -17,41 +21,98 @@
 }
 
 .team-block {
-    border: 2px solid black;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: start;
     flex-direction: column;
-    background-color: grey;
-    width: 150px;
-    height: 150px;
     margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 50px 100px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    min-height: 200px;
+    min-width: 200px;
 }
-
 
 .team-block li {
+    display: flex;
+    align-items: center;
     list-style: none;
-    padding-left: 5px;
-    background-color: grey;
+    color: #4d4d4d;
+    text-transform: uppercase;
+    font-size: 26px;
 }
 
-.add-team {
-    width: 150px;
-    height: 150px;
-}
-
-.add-player {
+.del-player {
+    padding: 10px;
+    cursor: pointer;
     border: none;
-    background: grey;
+    background: none;
+    font-weight: bold;
 }
 
-.delete-team {
+.del-player:hover {
+    color: red;
+}
+
+.del-team {
+    padding: 1px 7px;
+    border: 2px solid #4d4d4d;
+    border-radius: 3px;
+    cursor: pointer;
+    align-self: flex-end;
+    font-weight: bold;
+}
+
+.del-team:hover {
+    color: red;
+    border: 2px solid red;
+}
+
+
+.add-team-button {
+    padding: 5px;
+    cursor: pointer;
+    border: 2px solid #4d4d4d;
+    border-radius: 4px;
+}
+
+.add-team-button:hover {
+    border: 2px solid green;
+    color: green;
+}
+
+.teams-container {
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.add-player-input {
+    width: 180px;
+    margin: 5px 0;
+    padding: 8px;
+    border: 2px solid #4d4d4d;
+    border-radius: 4px;
+}
+
+
+.add-player-container {
+    display: flex;
+    flex-direction: row;
+    margin: 5px 0 5px 0;
+}
+
+.add-player-button {
     margin: 1px;
     width: 20px;
     height: 20px;
     background: none;
     border: none;
+    cursor: pointer;
 }
 
-.delete-team:hover {
-    background-color: rgb(99, 93, 93);
+.team-score {
+    align-self: center;
+    margin-top: auto;
 }

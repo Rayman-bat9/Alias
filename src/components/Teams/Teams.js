@@ -1,44 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Teams.css';
+import Team from '../Team';
 
-function Teams({ isTeamsReady, teams, addTeam }) {
-  const addPlayer = (teamIndex) => {
-    /* eslint-disable-next-line */
-    const playerName = prompt('Введите имя игрока:');
-
-    // if (playerName) {
-    //   const newPlayer = {
-    //     name: playerName,
-    //   };
-    //   const updatedTeams = [...teams];
-    //   updatedTeams[teamIndex].players.push(newPlayer);
-    //   setTeams(updatedTeams);
-    // }
-  };
-
+function Teams({
+  teams, addTeam, removeTeam, removeTeamPlayers, addTeamPlayers, isTeamsReady,
+}) {
   return (
-    <div>
+    <div className="teams-container">
       <div className="teams-panel">
-        <p>Teams: </p>
         {teams.map((team, index) => (
-          <div key={index}>
-            <div className="team-block">
-              <ul>
-                {team.players.map((player, playerIndex) => (
-                  <li key={playerIndex}>{player.name}</li>
-                ))}
-              </ul>
-              {!isTeamsReady && <button className="add-player" onClick={() => addPlayer(index)}>+</button>}
-            </div>
-            <p>
-              Счет:
-              {team.score}
-            </p>
-          </div>
+          <Team
+            key={index}
+            team={team}
+            removeTeam={removeTeam}
+            removeTeamPlayers={removeTeamPlayers}
+            addTeamPlayers={addTeamPlayers}
+            isTeamsReady={isTeamsReady}
+          />
         ))}
-        {!isTeamsReady
-                && <button className="add-team" onClick={addTeam}>+</button>}
       </div>
+      <button className="add-team-button" onClick={addTeam}>addTeam</button>
     </div>
   );
 }
