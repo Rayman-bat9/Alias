@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './components/Header';
-import GameBoard from './components/GameBoard';
+import BoardContainer from './components/BoardContainer';
 import './App.css';
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
         <Header title="Rayman production" />
       </div>
       <div className="game-board">
-        <GameBoard />
+        <BoardContainer />
       </div>
     </div>
   );
