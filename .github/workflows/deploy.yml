@@ -1,6 +1,7 @@
 name: Build and Deploy on gh-pages
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -13,5 +14,7 @@ jobs:
               uses: actions/checkout@v3
             - name: Install dependecies
               run: npm ci
+            - name: Install gh-pages
+              run: npm install gh-pages
             - name: deploy
               run: npm run deploy
