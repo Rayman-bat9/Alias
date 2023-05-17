@@ -1,13 +1,12 @@
 name: Build and Deploy on gh-pages
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
 
 jobs:
-    deploy:
+    build-and-deploy:
         runs-on: ubuntu-latest
         steps:
             - name: Get repository code
@@ -17,4 +16,10 @@ jobs:
             - name: Install gh-pages
               run: npm install gh-pages
             - name: deploy
-              run: npm run deploy
+              uses: crazy-max/ghaction-github-pages@v3
+              with: 
+                target_branch: gh-pages
+                build_dir: public
+              env:
+                GITHUB_TOKEN: ${{ secrets.MY_SECRET_TOKEN_DEPLOY }}
+
