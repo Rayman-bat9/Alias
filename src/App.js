@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="app">
       <div className="header">
-        <Header title="Rayman production" />
+        <Header title="Alias" />
       </div>
       <div className="game-board">
         <BoardContainer />
