@@ -13,6 +13,8 @@ jobs:
               uses: actions/checkout@v3
             - name: Install dependecies
               run: npm ci
+            - name: Install gh-pages
+              run: npm install gh-pages --save-dev
             - name: deploy
               env: 
                 CI: false
