@@ -20,6 +20,8 @@ jobs:
           node-version: 18
         env: 
           CI: false
+      - run: git config user.email "gaga63354@gmail.com"
+      - run: git config user.name "Rayman-bat9"
       - run: npm ci
       - name: Deploy
         run: npm run deploy
